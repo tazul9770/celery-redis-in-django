@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class="text-center text-2xl font-bold mt-10">Send some Emails</h1>
+    <p class="text-center text-gray-700">Click below to send welcome email to some users</p>
+    <form action="{% url 'send-welcome-email' %}" class="flex items-center justify-center mt-4" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="px-3 py-2 text-white font-bold bg-yellow-700 rounded-sm">Send Email</button>
+    </form>
+</body>
+</html>
