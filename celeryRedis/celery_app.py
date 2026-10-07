@@ -2,9 +2,9 @@ import os
 
 from celery import Celery
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "celeryRedis.settings")
 
-app = Celery("config")
+app = Celery("celeryRedis")
 
 app.config_from_object(
     "django.conf:settings",

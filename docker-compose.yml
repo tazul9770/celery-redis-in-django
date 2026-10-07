@@ -16,7 +16,7 @@ services:
     build:
       context: .
     container_name: django_celery
-    command: celery -A config worker --loglevel=info
+    command: celery -A celeryRedis worker --loglevel=info
     volumes:
       - .:/app
     depends_on:
@@ -26,7 +26,7 @@ services:
     build:
       context: .
     container_name: django_celery_beat
-    command: celery -A config beat --loglevel=info
+    command: celery -A celeryRedis beat --loglevel=info
     volumes:
       - .:/app
     depends_on:

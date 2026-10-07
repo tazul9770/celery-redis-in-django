@@ -6,9 +6,7 @@ def home(request):
 
 def send_welcome_email(request):
     recipients = [f"user{i}@example.com" for i in range(1, 4)]
-
     for email in recipients:
-        print(email)
         send_mail(
             subject="Welcome my users",
             message="Thanks for you join our team",
