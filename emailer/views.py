@@ -1,16 +1,11 @@
 from django.shortcuts import render
-from django.core.mail import send_mail
+from emailer.tasks import send_to_email
 
 def home(request):
     return render(request, "home.html")
 
 def send_welcome_email(request):
-    recipients = [f"user{i}@example.com" for i in range(1, 4)]
+    recipients = [f"user{i}@example.com" for i in range(1, 40)]
     for email in recipients:
-        send_mail(
-            subject="Welcome my users",
-            message="Thanks for you join our team",
-            from_email=None,
-            recipient_list=[email]
-        )
+        send_to_email.delay(email)
     return render(request, "success.html", {"count":len(recipients)})
